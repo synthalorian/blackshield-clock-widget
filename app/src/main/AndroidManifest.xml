@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <!-- USE_EXACT_ALARM: auto-granted at install (no user prompt), API 33+. -->
+    <uses-permission android:name="android.permission.USE_EXACT_ALARM" />
+    <!-- Fallback for API 31–32 behavior / OEM differences. -->
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+
     <application
         android:label="Blackshield Clock"
         android:allowBackup="false">
@@ -14,6 +20,7 @@
                 <action android:name="android.intent.action.TIME_SET" />
                 <action android:name="android.intent.action.DATE_CHANGED" />
                 <action android:name="android.intent.action.TIMEZONE_CHANGED" />
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
             <meta-data
                 android:name="android.appwidget.provider"
