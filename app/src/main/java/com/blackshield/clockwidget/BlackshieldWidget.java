@@ -50,7 +50,8 @@ public class BlackshieldWidget extends AppWidgetProvider {
         if (ACTION_TICK.equals(action)
                 || Intent.ACTION_TIME_CHANGED.equals(action)
                 || Intent.ACTION_DATE_CHANGED.equals(action)
-                || Intent.ACTION_TIMEZONE_CHANGED.equals(action)) {
+                || Intent.ACTION_TIMEZONE_CHANGED.equals(action)
+                || Intent.ACTION_BOOT_COMPLETED.equals(action)) {
             AppWidgetManager mgr = AppWidgetManager.getInstance(context);
             int[] ids = mgr.getAppWidgetIds(
                     new android.content.ComponentName(context, BlackshieldWidget.class));
@@ -129,11 +130,18 @@ public class BlackshieldWidget extends AppWidgetProvider {
         next.set(Calendar.SECOND, 0);
         next.set(Calendar.MILLISECOND, 300);
         PendingIntent pi = tickIntent(context);
-        try {
+        // USE_EXACT_ALARM is declared in the manifest (auto-granted at install),
+        // so the exact path should always succeed. Keep the runtime check anyway:
+        // the user can still revoke Alarms & reminders on Android 14+.
+        boolean canExact = android.os.Build.VERSION.SDK_INT < 31 || am.canScheduleExactAlarms();
+        if (canExact) {
             am.setExactAndAllowWhileIdle(AlarmManager.RTC, next.getTimeInMillis(), pi);
-        } catch (SecurityException se) {
-            // Exact-alarm permission withheld (Android 14+ default) — fall back to inexact.
-            am.setAndAllowWhileIdle(AlarmManager.RTC, next.getTimeInMillis(), pi);
+        } else {
+            // Exact-alarm permission revoked — degrade to inexact and tell the user
+            // to re-enable Settings → Apps → Blackshield Clock → Alarms & reminders.
+            try {
+                am.setAndAllowWhileIdle(AlarmManager.RTC, next.getTimeInMillis(), pi);
+            } catch (SecurityException ignored) { }
         }
     }
 
