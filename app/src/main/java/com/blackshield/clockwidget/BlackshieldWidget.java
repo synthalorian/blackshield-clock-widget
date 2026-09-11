@@ -77,7 +77,7 @@ public class BlackshieldWidget extends AppWidgetProvider {
         }
     }
 
-    private Bitmap drawFace(Context context) {
+    Bitmap drawFace(Context context) {
         Bitmap bmp = Bitmap.createBitmap(BMP_W, BMP_H, Bitmap.Config.ARGB_8888);
         Canvas canvas = new Canvas(bmp);
 

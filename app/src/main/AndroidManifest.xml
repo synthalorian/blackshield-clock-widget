@@ -9,7 +9,17 @@
 
     <application
         android:label="Blackshield Clock"
+        android:icon="@mipmap/ic_launcher"
         android:allowBackup="false">
+
+        <activity
+            android:name=".PreviewActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
 
         <receiver
             android:name=".BlackshieldWidget"
