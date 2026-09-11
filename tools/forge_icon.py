@@ -56,6 +56,10 @@ def render(svg: str, px: int, out: Path) -> None:
     BUILD.mkdir(parents=True, exist_ok=True)
     tmp_svg = BUILD / (out.stem + ".svg")
     tmp_svg.write_text(svg)
+    if out.suffix == ".png":
+        subprocess.run(["rsvg-convert", "-w", str(px), "-h", str(px),
+                        str(tmp_svg), "-o", str(out)], check=True)
+        return
     tmp_png = out.with_suffix(".png")
     subprocess.run(["rsvg-convert", "-w", str(px), "-h", str(px),
                     str(tmp_svg), "-o", str(tmp_png)], check=True)
