@@ -13,7 +13,7 @@ if (credsFile.exists()) {
 }
 
 android {
-    namespace 'com.blackshield.clockwidget'
+    namespace 'com.synthalorian.clockwidget'
     compileSdk 36
 
     signingConfigs {
@@ -28,7 +28,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.blackshield.clockwidget"
+        applicationId "com.synthalorian.clockwidget"
         minSdk 26
         targetSdk 36
         versionCode 3
