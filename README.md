@@ -46,4 +46,4 @@ Apache-2.0. Pirata One © The Pirata Project Authors, SIL Open Font License 1.1.
 
 ---
 
-Made by synth with synthclaw 🎹🦞
+Made by synth with blackclaw ⚫🦞
