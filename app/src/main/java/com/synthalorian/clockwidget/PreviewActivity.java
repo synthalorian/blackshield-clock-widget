@@ -1,4 +1,4 @@
-package com.blackshield.clockwidget;
+package com.synthalorian.clockwidget;
 
 import android.app.Activity;
 import android.os.Bundle;

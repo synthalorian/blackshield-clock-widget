@@ -1,4 +1,4 @@
-package com.blackshield.clockwidget;
+package com.synthalorian.clockwidget;
 
 import android.app.AlarmManager;
 import android.app.PendingIntent;
@@ -28,7 +28,7 @@ import java.util.Locale;
  */
 public class BlackshieldWidget extends AppWidgetProvider {
 
-    private static final String ACTION_TICK = "com.blackshield.clockwidget.TICK";
+    private static final String ACTION_TICK = "com.synthalorian.clockwidget.TICK";
 
     private static final int COLOR_TIME = 0xFFE8E6E3;  // bone white
     private static final int COLOR_BLOOD = 0xFFC1121F; // the blood line

@@ -46,7 +46,7 @@ Personalization
 - Widget picker preview: built into the app (drawable-nodpi/widget_preview.png)
 
 ## Notes
-- applicationId: com.blackshield.clockwidget (IMMUTABLE after first upload)
+- applicationId: com.synthalorian.clockwidget (IMMUTABLE after first upload)
 - Upload key: ~/.keystores/blackshield-upload.jks (shared Blackshield line)
 - versionCode 3 / versionName 1.2 — AAB: app/build/outputs/bundle/release/app-release.aab
 - Price: $0.99 USD
